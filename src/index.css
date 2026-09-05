@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-white/5;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-void-950 text-mist-200 font-body antialiased overflow-x-hidden;
+    background-image: radial-gradient(120% 120% at 50% -10%, rgba(166, 63, 224, 0.16) 0%, rgba(7, 5, 11, 0) 55%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-white tracking-tight;
+  }
+  ::selection {
+    background: rgba(166, 63, 224, 0.4);
+  }
+  :focus-visible {
+    outline: 2px solid #C77DFF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(166, 63, 224, 0.35);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/[0.04] backdrop-blur-xl2 border border-white/10 shadow-glass relative;
+  }
+  .glass-panel::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] bg-glass-sheen pointer-events-none;
+  }
+  .glass-pill {
+    @apply glass-panel rounded-full;
+  }
+  .btn-primary {
+    @apply bg-genta-glow text-void-950 font-semibold rounded-full px-6 py-3
+      shadow-glow transition-transform duration-300 ease-out
+      hover:scale-[1.03] active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply glass-pill text-mist-200 font-medium px-5 py-2.5 transition-all duration-300
+      hover:bg-white/[0.08] hover:text-white active:scale-[0.97];
+  }
+  .icon-btn {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-mist-300
+      transition-all duration-200 hover:text-white hover:bg-white/10 active:scale-90;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-white/5 rounded-2xl;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.09) 40px,
+      rgba(255, 255, 255, 0.03) 80px
+    );
+    background-size: 400px 100%;
+    animation: shimmer 1.6s infinite linear;
+  }
+  .section-label {
+    @apply text-sm text-mist-400 font-medium;
+  }
+}
